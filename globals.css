@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #142d59;
+  --color-ivory: #f8f4ea;
+  --color-gold: #c3a16a;
+  --color-forest: #173f35;
+  --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-jost), "Segoe UI", Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-navy);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+section[id],
+footer[id] {
+  scroll-margin-top: 84px;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: #fff;
+}
+
+/* Elegant thin gold rule used under section eyebrows */
+.rule-gold {
+  width: 64px;
+  height: 2px;
+  background: var(--color-gold);
+}
+
+/* 9:16 video stage — the frame is exactly the video ratio, so
+   object-fit: cover never crops the picture. */
+.video-frame {
+  position: relative;
+  overflow: hidden;
+  background: #0f2242;
+}
+.video-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Catalogue / collection cards: rise-only reveal.
+   Opacity is never animated, so call buttons can never sit at opacity 0. */
+.card-rise {
+  will-change: transform;
+}
+
+/* Lightbox */
+.lightbox-backdrop {
+  background: rgba(10, 22, 46, 0.92);
+}
+
+/* Timeline */
+.timeline-line {
+  background: linear-gradient(
+    to bottom,
+    var(--color-gold),
+    var(--color-gold) 70%,
+    transparent
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
